@@ -87,10 +87,11 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          cp palmeiras-164.png _site/palmeiras-164.png
           sed -i "s|__COMMIT__|${GITHUB_SHA::7}|g"   _site/index.html
           sed -i "s|__AUTOR__|${{ github.actor }}|g" _site/index.html
           sed -i "s|__DATA__|$(TZ=America/Sao_Paulo date '+%d/%m/%Y às %H:%M')|g" _site/index.html
-
+          
       - name: Empacotar o site
         if: steps.pages.outputs.ligado == 'sim'
         uses: actions/upload-pages-artifact@v5
